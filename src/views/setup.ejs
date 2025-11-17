@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Setup Account</title>
+    <style>
+      /* Background & Layout */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      /* Card Container */
+      .container {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 2.5rem;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        width: 380px;
+        text-align: center;
+        backdrop-filter: blur(8px);
+      }
+
+      /* Header */
+      h2 {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 1.2rem;
+      }
+
+      .info {
+        color: #555;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Floating Input Fields */
+      .form-group {
+        position: relative;
+        margin-bottom: 1.5rem;
+        width: 100%;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px 12px 12px 12px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: none;
+        background: transparent;
+        transition: all 0.2s ease;
+      }
+
+      input:focus {
+        border-color: #2575fc;
+        box-shadow: 0 0 4px rgba(37, 117, 252, 0.3);
+      }
+
+      label {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        color: #777;
+        font-size: 0.95rem;
+        pointer-events: none;
+        transition: all 0.2s ease;
+      }
+
+      input:focus + label,
+      input:not(:placeholder-shown) + label {
+        top: -8px;
+        left: 8px;
+        background: white;
+        padding: 0 5px;
+        font-size: 0.8rem;
+        color: #2575fc;
+      }
+
+      /* Submit Button */
+      button {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        width: 100%;
+        transition: all 0.3s ease;
+      }
+
+      button:hover {
+        background: linear-gradient(135deg, #5b0dbb, #1d66e0);
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Set up your account</h2>
+      <p class="info">Email: <strong><%= email %></strong></p>
+
+      <form action="/auth/setup" method="POST">
+        <input type="hidden" name="userId" value="<%= userId %>" />
+
+        <div class="form-group">
+          <input type="text" name="username" id="username" required placeholder=" " />
+          <label for="username">Username</label>
+        </div>
+
+        <div class="form-group">
+          <input type="password" name="password" id="password" required placeholder=" " />
+          <label for="password">Password</label>
+        </div>
+
+        <div class="form-group">
+          <input type="date" name="dob" id="dob" required placeholder=" " />
+          <label for="dob">Date of Birth</label>
+        </div>
+
+        <button type="submit">Save & Continue</button>
+      </form>
+    </div>
+  </body>
+</html>

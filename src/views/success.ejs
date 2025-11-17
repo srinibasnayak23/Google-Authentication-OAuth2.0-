@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= user.name %>'s Profile</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .profile-card {
+        background: #fff;
+        width: 600px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: center;
+        padding: 90px 20px 30px 20px;
+        position: relative;
+      }
+
+      .profile-img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #00aaff;
+        background: #fff;
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      h2 {
+        margin-top: 70px; /* add space for profile image */
+        color: #333;
+        font-size: 1.8rem;
+      }
+
+      p {
+        color: #555;
+        margin: 6px 0;
+      }
+
+      .info {
+        text-align: left;
+        margin-top: 20px;
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+      }
+
+      .info p {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.95rem;
+      }
+
+      .label {
+        color: #666;
+        font-weight: 600;
+      }
+
+      .logout-btn {
+        margin-top: 20px;
+        display: inline-block;
+        background-color: #ff4757;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .logout-btn:hover {
+        background-color: #e84118;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="profile-card">
+      <img
+        src="<%= user.picture || 'https://cdn-icons-png.flaticon.com/512/847/847969.png' %>"
+        alt="Profile Picture"
+        class="profile-img"
+      />
+
+      <h2><%= user.name || user.username %></h2>
+      <p>@<%= user.username || 'not set' %></p>
+
+      <div class="info">
+        <p><span class="label">Email:</span> <span><%= user.email %></span></p>
+        <p><span class="label">Date of Birth:</span> <span><%= user.dob || 'Not provided' %></span></p>
+        <p><span class="label">User ID:</span> <span><%= user._id %></span></p>
+      </div>
+
+      <a href="/auth/logout" class="logout-btn">Logout</a>
+    </div>
+  </body>
+</html>
