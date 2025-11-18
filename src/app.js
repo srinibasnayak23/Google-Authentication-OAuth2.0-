@@ -31,7 +31,7 @@ app.use(
     saveUninitialized: false,
     store: MongoStore.create({
       //mongoUrl: process.env.MONGO_URI,
-      mongoUrl: "mongodb://localhost:27017",
+      mongoUrl: "mongodb+srv://devsrinibas_db_user:Ge85sJZgjBBQQuwA@freecluster.ju5itlx.mongodb.net/?appName=FreeCluster",
       collectionName: "sessions",
     }),
     cookie: {
